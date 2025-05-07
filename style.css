@@ -20,7 +20,7 @@ body {
     width: 700px;
     height: 700px;
     border-radius: 50%;
-    border: 1px solid rgb(155, 0, 0);
+    border: 3px solid rgba(155, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,14 +30,18 @@ body {
 .hour-character {
     position: absolute;
     width: 30px;
-    /* Size of numbers/characters */
     height: 30px;
     color: rgb(213, 12, 12);
     text-align: center;
     font-size: 35px;
     font-weight: 600;
+    text-shadow: 1px 2px 4px rgb(163, 0, 0);
+    transform: rotate(var(--angle)) translate(325px) rotate(calc(-1 * var(--angle)));
 }
 
+.hour-character:nth-child(n) {
+    transform: rotate(var(--angle)) translate(325px) rotate(calc(-1 * var(--angle)));
+}
 
 .hand {
     position: absolute;
@@ -51,19 +55,19 @@ body {
 
 .center-dot {
     position: absolute;
-    width: 25px;
-    height: 25px;
-    border: 1px solid white;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(118, 0, 0);
     border-radius: 50%;
     background-color: rgb(164, 0, 0);
     z-index: 100;
 }
 
-.second {
+.hand.second {
     width: 6px;
     height: 300px;
     background-color: rgb(208, 0, 0);
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 10;
 }
 
@@ -72,12 +76,106 @@ body {
     height: 270px;
     background-color: rgb(87, 87, 87);
     border-radius: 10px;
-    z-index: 8;
 }
 
 .hand.hour {
     width: 15px;
-    height: 210px;
-    background-color: rgb(87, 87, 87);
+    height: 200px;
+    background-color: rgb(78, 78, 78);
     border-radius: 10px;
+}
+
+/* //////////////// RESPONSIVE */
+@media (max-width: 900px) {
+    .clock {
+        width: 500px;
+        height: 500px;
+    }
+
+    .hour-character {
+        font-size: 30px;
+    }
+
+    .hour-character:nth-child(n) {
+        transform: rotate(var(--angle)) translate(225px) rotate(calc(-1 * var(--angle)));
+    }
+
+    .hand.second {
+        height: 220px;
+    }
+
+    .hand.minute {
+        height: 180px;
+    }
+
+    .hand.hour {
+        height: 140px;
+    }
+}
+
+@media (max-width: 600px) {
+    .clock {
+        width: 300px;
+        height: 300px;
+    }
+
+    .hour-character {
+        font-size: 25px;
+    }
+
+    .hour-character:nth-child(n) {
+        transform: rotate(var(--angle)) translate(125px) rotate(calc(-1 * var(--angle)));
+    }
+
+    .hand.second {
+        width: 5px;
+        height: 125px;
+    }
+
+    .hand.minute {
+        width: 10px;
+        height: 100px;
+    }
+
+    .hand.hour {
+        width: 10px;
+        height: 85px;
+    }
+
+    .center-dot {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 325px) {
+    .clock {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hour-character {
+        font-size: 22px;
+    }
+
+    .hour-character:nth-child(n) {
+        transform: rotate(var(--angle)) translate(105px) rotate(calc(-1 * var(--angle)));
+    }
+
+    .hand.second {
+        height: 100px;
+    }
+
+    .hand.minute {
+        height: 80px;
+    }
+
+    .hand.hour {
+        height: 70px;
+    }
+
+    .center-dot {
+        width: 17px;
+        height: 17px;
+    }
 }
